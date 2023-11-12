@@ -166,13 +166,12 @@ def remove_dictionary(colors, r_id):
 #  A Python Dictionary contains List as a value. Write a Python program to update the list values in the said dictionary.
 dict = {'Math': [88, 89, 90], 'Physics': [92, 94, 89], 'Chemistry': [90, 87, 93]}
 
-# def add_marks(d,m):
-#     dict = {}
-#     for i in d.items():
-#         print(i)
-#         dict.update()
-#     return dict
-# print(add_marks(dict,2))
+def add_marks(d,m):
+    for key in d:
+        d[key] = [value + m for value in d[key]]
+    return d
+        
+print(add_marks(dict,2))
 
 # convert to lists
 dict = {1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}
@@ -191,5 +190,7 @@ def extract(d,sub):
 # print(extract(dict,'Math'))
 
 
-    
-        
+# print all the marks 
+z=[{'S001': {'Adina Park': 85}}, {'S002': {'Leyton Marsh': 98}}, {'S003': {'Duncan Boyle': 89}}, {'S004': {'Saim Richards': 92}}] 
+innermost_values = [list(inner_dict.values())[0] for outer_dict in z for inner_dict in outer_dict.values()]
+# print(innermost_values)
