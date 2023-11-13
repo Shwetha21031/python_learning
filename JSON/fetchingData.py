@@ -20,7 +20,7 @@ file3.close()
 f = open("apiData.json",'r')
 data = json.load(f)
 for x in data:
-    print(f"id : {x["id"]}, title: {x["title"]}")
+    print(f"id : {x[id]}, title: {x[title]}")
     
 f.close()
 
