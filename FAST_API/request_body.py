@@ -4,7 +4,8 @@
 
 # put ,patch  or post
 from fastapi import FastAPI,Path,Body
-from pydantic import BaseModel,Field,List
+from pydantic import BaseModel,Field,HttpUrl
+from typing import List,Annotated
 
 app = FastAPI()
 
@@ -85,18 +86,104 @@ class Item2(BaseModel):
     
 # body nested model---------------------------------------
 class Image(BaseModel):
-    url:str
+    url: HttpUrl
     name:str
 
 class Item(BaseModel):
     name: str
     price: float
-    # tags1: List[str] = [] #list of strings
+    tags: list[str] = [] #list of strings ,or
+    tags1: List[str] = [] #list of strings
     tags2 : set[str] = set() #set of strings
     image: Image | None = None
+    imageList: List[Image] | None = None
  
 
+# @app.put("/items/{item_id}")
+# async def update_item(item_id: int, item: Item):
+#     results = {"item_id": item_id, "item": item}
+#     return results
+
+# bodies with pure lists
+# @app.put("/items/multiple")
+# async def create_mutiple_images(images:List[Image]=Body(embed=True)):
+#     return images 
+
+# Declare Request Example Data --------------------------------- @
+# You can declare examples of the data your app can receive.
+class Item(BaseModel):
+    name: str = Field(examples=['abcd'])
+    description: str | None = Field(examples=['lorem30'])
+    price: int = Field(examples=[10])
+    tax: float | None  = Field(examples=[1])
+    
+    # model_config = { 
+# it will be used in the API docs.
+        # "json_schema_extra": {
+        #     "examples": [
+        #         {
+        #             "name": "Foo",
+        #             "description": "A very nice Item",
+        #             "price": 35.4,
+        #             "tax": 3.2,
+        #             # "pay": 300
+        #         }
+        #     ]
+        # }
+    # }
+
+
+# example in body
+# @app.put("/items/{item_id}")
+# async def update_item(item_id: int, item: Item = Body(example={
+#                     "name": "Foo",
+#                     "description": "A very nice Item",
+#                     "price": 35.4,
+#                     "tax": 3.2,
+#                     # "pay": 300
+#                 })):
+#     results = {"item_id": item_id, "item": item}
+#     return results
+
+
+# Using the openapi_examples Parameter
+# You can declare the OpenAPI-specific examples in FastAPI with the parameter openapi_examples
 @app.put("/items/{item_id}")
-async def update_item(item_id: int, item: Item):
+async def update_item(
+    *,
+    item_id: int,
+    item: Annotated[
+        Item,
+        Body(
+            openapi_examples={
+                "normal": {
+                    "summary": "A normal example",
+                    "description": "A **normal** item works correctly.",
+                    "value": {
+                        "name": "Foo",
+                        "description": "A very nice Item",
+                        "price": 35.4,
+                        "tax": 3.2,
+                    },
+                },
+                "converted": {
+                    "summary": "An example with converted data",
+                    "description": "FastAPI can convert price `strings` to actual `numbers` automatically",
+                    "value": {
+                        "name": "Bar",
+                        "price": "35.4",
+                    },
+                },
+                "invalid": {
+                    "summary": "Invalid data is rejected with an error",
+                    "value": {
+                        "name": "Baz",
+                        "price": "thirty five point four",
+                    },
+                },
+            },
+        ),
+    ],
+):
     results = {"item_id": item_id, "item": item}
     return results
