@@ -1,0 +1,11 @@
+ SQLAlchemy is an SQL toolkit and Object-Relational Mapping (ORM) library for Python.
+
+ make a directory SQL with files
+ crud
+ database
+ main
+ models
+ schemas
+
+
+ relationship -  a "magic" attribute that will contain the values from other tables related to this one.
