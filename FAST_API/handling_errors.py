@@ -5,6 +5,15 @@
 # The item the client was trying to access doesn't exist.
 
 from fastapi import FastAPI, HTTPException
+from fastapi import  Request,status
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import PlainTextResponse
+from starlette.responses import HTMLResponse
+from starlette.exceptions import HTTPException as starletteException
+from fastapi.encoders import jsonable_encoder
+from pydantic import BaseModel
+from fastapi.exception_handlers import request_validation_exception_handler
 
 app = FastAPI()
 
@@ -23,11 +32,6 @@ async def read_item_header(item_id: str):
 
 
 # customExceptions
-from fastapi import  Request
-from fastapi.responses import JSONResponse
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import PlainTextResponse
-
 class UnicornException(Exception):
     def __init__(self, name: str):
         self.name = name
@@ -47,12 +51,34 @@ async def read_unicorn(name: str):
     return {"unicorn_name": name}
 
 
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request, exc):
-    return PlainTextResponse(str(exc), status_code=400)
+# this gives us an human readable simple error when you type string or anything other that int in this case
+# @app.exception_handler(RequestValidationError)
+# async def validation_exception_handler(request, exc):
+#     return PlainTextResponse(str(exc), status_code=400)
 
-@app.get("/items/{item_id}")
-async def read_item(item_id: int):
-    if item_id == 3:
-        raise HTTPException(status_code=418, detail="Nope! I don't like 3.")
-    return {"item_id": item_id}
+# # starlette exception handling
+# @app.exception_handler(starletteException)
+# def http_exception_handler(request ,exc):
+#     return PlainTextResponse(str(exc.detail),status_code=exc.status_code)
+
+# @app.get("/Validationitems/{item_id}")
+# async def read_item(item_id: int):
+#     if item_id == 3:
+#         raise HTTPException(status_code=418, detail="Nope! I don't like 3.")
+#     return {"item_id": item_id}
+
+
+# overriding the httpException error handler
+# The RequestValidationError contains the body it received with invalid data.
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request : Request , exc: RequestValidationError):
+    return JSONResponse(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, content=jsonable_encoder({"detail":exc.errors(),"body":exc.body}))
+
+class Item(BaseModel):
+    title: str
+    size: int
+
+
+@app.post("/items/")
+async def create_item(item: Item):
+    return item
