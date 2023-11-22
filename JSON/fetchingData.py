@@ -48,11 +48,12 @@ def write_json(new_data, filename='demo.json'):
         file_data["emp_details"].append(new_data)
         file.seek(0)
         json.dump(file_data, file, indent = 4)
- 
+
    
 y = {"emp_name":"Nikhil",
      "email": "nikhil@geeksforgeeks.org",
      "job_profile": "Full Time"
     }
      
-write_json(y) 
+write_json(y)
+
