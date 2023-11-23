@@ -136,3 +136,29 @@ list1 = ["a", "b", "c"]
 list2 = [1, 2, 3]
 list3 = list1 + list2
 print(list3)
+
+
+# nested list comprehensions
+matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+]
+invertedMatrix = [[row[i] for row in matrix] for i in range(4)]
+# print(invertedMatrix)
+
+
+# To loop over two or more sequences at the same time, the entries can be paired with the zip() function.
+questions = ['name', 'quest', 'favorite color']
+answers = ['lancelot', 'the holy grail', 'blue']
+# for q, a in zip(questions, answers):
+#     print('What is your {0}?  It is {1}.'.format(q, a))
+    
+# To loop over a sequence in reverse, first specify the sequence in a forward direction and then call the reversed() function.
+# for i in reversed(range(1, 10, 2)):
+    # print(i)
+
+
+basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+# for i in sorted(basket):
+#     print(i)

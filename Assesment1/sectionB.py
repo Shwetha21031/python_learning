@@ -17,8 +17,7 @@ def add15(l,index):
 
 # 1.3 --
 def delete4(l):
-    # l.remove(4)
-    l.pop(4)
+    l.remove(4)
     return l
 # print(delete4(l1))
 
@@ -32,7 +31,9 @@ def addData(l):
 
 # 1.5
 def mergeAndRev(l1,l2):
-    l3 =  l1[::-1] + l2[::-1]
+    l1.reverse()
+    l2.reverse()
+    l3 = l1+l2
     return l3
 # print(mergeAndRev(l1,l2))
 
@@ -51,6 +52,7 @@ sampleDict = {
 }
 
 # print("Marks of history" ,sampleDict["Class"]["Student"]["marks"]["History"])
+
 def findVal(d):
     for i in d.values():
         if type(i) == dict:

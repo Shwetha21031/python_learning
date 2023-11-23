@@ -71,7 +71,6 @@ def add15(l,index):
     for i in range(len(l)):
         print(i)
         if (i != index):
-            print(i,index)
             newl.append(l[i])
         else:
             newl.append(15)
@@ -117,7 +116,7 @@ def find_by_key(data, target):
         
     return "key not found"
 
-print(find_by_key(sampleDict,"History"))
+# print(find_by_key(sampleDict,"History"))
 
 # making multiple folders at once
 # root_folder = "Archive-viewer"

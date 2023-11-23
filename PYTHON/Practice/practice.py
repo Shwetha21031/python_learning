@@ -21,9 +21,14 @@ def Convert_dict(a):
   
 # Driver code  
 list1 = ['x', 1, 'y', 2, 'z', 3]  
-print(Convert_dict(list1))  
+# print(Convert_dict(list1))  
 
+# a = "abc"
+# b = "abc" "def"
+# print(b)
 
+# clear the list by replacing all the elements with an empty list
+# letters[:] = []
 
 
 

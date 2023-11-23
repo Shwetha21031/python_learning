@@ -7,7 +7,8 @@ def half(s):
 
 # 2 
 def revList(l):
-    return l[::-1]
+    l.reverse()
+    return l
 
 # print(revList([1,2,3]))
 # print(revList([1,2,3]))

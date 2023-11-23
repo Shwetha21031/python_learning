@@ -3,10 +3,10 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-# @app.get("/items/{item_id}")
-# # async def read_item(item_id): # youll recieve a string 
-# async def read_item(item_id: int): #with types
-#     return {"item_id": item_id}
+@app.get("/items/{item_id}")
+# async def read_item(item_id): # youll recieve a string 
+async def read_item(item_id: int): #with types
+    return {"item_id": item_id}
 
 
 
@@ -25,7 +25,7 @@ app = FastAPI()
 # Predefined values
 # you want the possible valid path parameter values to be predefined, you can use a standard Python Enum
 # from enum import Enum
-# class ModelName(str, Enum):
+# class ModelName(str, Enum): #you'll get options in thedocumentation
 #     alexnet = "alexnet"
 #     resnet = "resnet"
 #     lenet = "lenet"
@@ -37,6 +37,11 @@ app = FastAPI()
 #         return {"model_name": model_name, "message": "LeCNN all the images"}
 #     return {"model_name": model_name, "message": "Have some residuals"}
 
+# Path convertor
+# Using an option directly from Starlette you can declare a path parameter containing a path using a URL like:
+# /files/{file_path:path}
+# You could need the parameter to contain /home/johndoe/myfile.txt, with a leading slash (/).
+# In that case, the URL would be: /files//home/johndoe/myfile.txt, with a double slash (//) between files and home.
 
 # --------------advance (after query parameter)
 
