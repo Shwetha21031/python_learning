@@ -1,11 +1,11 @@
-# 1
+# 1 --
 def half(s):
     return s[0:int(len(s)/2)]
 
 # print(half("HelloThere"))
 
 
-# 2
+# 2 
 def revList(l):
     return l[::-1]
 
@@ -13,14 +13,14 @@ def revList(l):
 # print(revList([1,2,3]))
 
 
-# 3
+# 3 --
 def count9(l,num):
     return l.count(num)
 
 # print(count9([1,9,9,3,9],9))
 
 
-# 4
+# 4 --
 def countunique(l):
     sum = 0
     for i in l:
@@ -33,7 +33,7 @@ def countunique(l):
 # print(countunique([2,9,2]))
 
 
-# 5
+# 5 --
 def diffBetweenNums(l):
     return max(l) - min(l)
 

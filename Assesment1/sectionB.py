@@ -1,21 +1,21 @@
 l1 = [1,2,3,4,5]
 l2 = [6,7,8,9,10]
 
-# 1.1
+# 1.1  --
 def mergeLists(l1,l2):
     l3 = l1+l2
     return l3
-print(mergeLists(l1,l2)[-1])
+print(mergeLists(l1,l2))
 
 
-# 1.2
+# 1.2 --
 def add15(l,index):
     l.insert(index,15)
     return l
 # print(add15(l2,-1))
 
 
-# 1.3
+# 1.3 --
 def delete4(l):
     # l.remove(4)
     l.pop(4)
@@ -32,11 +32,12 @@ def addData(l):
 
 # 1.5
 def mergeAndRev(l1,l2):
-    return l1[::-1] + l2[::-1]
+    l3 =  l1[::-1] + l2[::-1]
+    return l3
 # print(mergeAndRev(l1,l2))
 
 
-# 2
+# 2 --
 sampleDict = {
     "Class":{
         "Student":{
@@ -59,14 +60,14 @@ def findVal(d):
 print(findVal(sampleDict))
 
 
-# 3
+# 3 --
 def uniqueElem(l):
     newl = set(l)
     return list(newl)
 # print(uniqueElem([1,1,2,1,3,4,4]))
 
 
-# 4
+# 4 --
 def sortList(l):
     l.sort()
     return l
