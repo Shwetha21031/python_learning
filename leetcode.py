@@ -40,4 +40,22 @@ def removeElement( nums, val):
 
     
     
-print(removeElement([1,2,3,2,3,1,4,5,1],1))
+# print(removeElement([1,2,3,2,3,1,4,5,1],1))
+
+
+# 
+def factnZeros(n):
+    fact = 1
+    for i in range(1,n+1):
+        fact = fact*i
+    s = str(fact)[::-1]
+    print(s)
+    zeros = 0
+    for i in s:
+        if i == "0":
+            zeros+=1
+        else:
+            break
+    print(zeros,"zero's")
+    
+factnZeros(10)
