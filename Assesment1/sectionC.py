@@ -153,9 +153,9 @@ class Employee:
             return
         
              
-createFolders()
+# createFolders()
 e1 = Employee()
-# e1.add_Employee()
+e1.add_Employee()
 # e1.view_Employee()
 # e1.del_Data()
 # e1.update_Employee()

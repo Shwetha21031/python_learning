@@ -58,4 +58,25 @@ def factnZeros(n):
             break
     print(zeros,"zero's")
     
-factnZeros(10)
+# factnZeros(10)
+
+# dict = {
+#     1 : {
+#         "name":"abc"
+#     },
+#     3 : {
+#         "name":"abcd"
+#     },
+#     2 : {
+#         "name":"abce"
+#     }
+# }
+# l = []
+# for k,v in dict.items():
+#     l.append({k:v})
+    
+# print(l)
+
+# import json
+# with open("abc.json",'w') as file:
+#     json.dump(l,file) 
