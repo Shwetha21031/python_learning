@@ -5,5 +5,3 @@ python-multipart
 python-jose[cryptography]
 passlib[bcrybt]
 SQLAlchemy
-PyJWT
-python-decouple

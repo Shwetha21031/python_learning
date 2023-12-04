@@ -1,0 +1,39 @@
+.body{
+    display: grid;
+    place-items: center;
+    height: calc(100vh - 8vh);
+    flex-wrap: wrap;
+
+
+
+    .btn{
+        margin: 10px;
+        padding: 50px 50px;
+        border: none;
+        border-radius: 5px;
+        color: rgb(17, 17, 17);
+        font-weight: bold;
+        box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    }
+}
+
+@mixin button-mixin($border-color,$bg-color){
+    background-color: $bg-color;
+    border: solid 1.5px $border-color !important;
+}
+
+.view-btn{
+    @include button-mixin(#61AFFE , #EFF7FF)
+}
+
+.create-btn{
+    @include button-mixin(#49CC90  , #ECFAF4)
+}
+
+.update-btn{
+    @include button-mixin(#FCA130  ,  #FFF5EA)
+}
+
+.delete-btn{
+    @include button-mixin(#F93E3E  , #FEEBEB)
+}
