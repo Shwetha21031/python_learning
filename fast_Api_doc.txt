@@ -1,0 +1,25 @@
+Task Description:
+
+You are building a FastAPI application to manage a list of users. Your application should expose an endpoint to receive user data in JSON format and validate the incoming data. Additionally, the application should return a JSON response with specific details.
+
+Requirements:
+
+Create a FastAPI application with a single endpoint to handle user data.
+
+Define a JSON schema for the expected user data. The user data should include at least the following fields: username, email, and age.
+
+Implement JSON validation using the Pydantic library to ensure that incoming requests comply with the defined schema. If the incoming JSON does not match the schema, return a meaningful error response.
+
+Upon successful validation, generate a JSON response with the following format:
+
+json
+Copy code
+{
+  "message": "User data received successfully",
+  "user": {
+    "username": "provided-username",
+    "email": "provided-email",
+    "age": provided-age
+  }
+}
+Test your FastAPI application by sending HTTP requests with valid and invalid JSON payloads to ensure that the validation and response generation work as expected.
